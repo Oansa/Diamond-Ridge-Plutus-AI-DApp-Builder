@@ -1,7 +1,7 @@
 # Diamond-Ridge-Plutus-AI-DApp-Builder
 An AI-powered Plutus dApp builder that turns natural-language instructions into complete Cardano applications, including smart contracts, off-chain code, backend logic, and frontend scaffolding.
 
-#Project features
+# Project features
 Automated security pattern detection
 Code validation before compilation
 Test case generation for validators
