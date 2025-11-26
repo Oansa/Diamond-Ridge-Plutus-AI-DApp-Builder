@@ -1,41 +1,11 @@
 # Diamond-Ridge-Plutus-AI-DApp-Builder
 An AI-powered Plutus dApp builder that turns natural-language instructions into complete Cardano applications, including smart contracts, off-chain code, backend logic, and frontend scaffolding.
 
+# Data Flow Diagram 
+https://www.figma.com/board/YAcRwRsrTDPpAYR1HXdsT8/Diamond-Ridge-System-Architecture?node-id=0-1&t=yMH8UBYwv9QznC71-1
 
-# System Architecure Diagram
+# AI Training & Code Generation Pipeline
+https://www.figma.com/board/5zKrgSiBpJjsWWVSsQy7SP/AI-Training---Code-Generation-Pipeline?node-id=0-1&t=O0qLh62O58qBw2xD-1
 
-flowchart TD
-    User([User]) --> UI[Web UI / IDE]
-    UI --> Backend[Backend API]
-    Backend --> ModelServer[AI Model Server]
-    ModelServer --> Validator[Validation Layer]
-    Validator --> Compiler[Plutus Compiler]
-    Compiler --> Testnet[Testnet Deployment Tool]
-    
-    Validator --> SecurityScan[Security Scanner]
-    SecurityScan --> Report[Feedback Report]
-
-    Backend --> DB[(Project Database)]
-
-
- 
-
-# AI Training & Plutus Code Generation Pipeline
-
-flowchart LR
-flowchart TD
-    A[Raw Plutus Code Sources] --> B[Data Cleaning & Processing]
-    B --> C[Tokenization]
-    C --> D[Fine-Tuning LLM on Plutus Data]
-    D --> E[Model Evaluation]
-    E --> G{Passes Quality?}
-    G -->|Yes| H[Deploy Model to Model Server]
-    G -->|No| D
-
-    H --> I[User Input (Natural Language)]
-    I --> J[AI Generates Plutus Code]
-    J --> K[Validation Layer]
-    K --> L[Compilation & Security Checks]
-    L --> M[Validated Code Output]
-
-
+# System Architecture 
+https://www.figma.com/board/mzH54tVnmDoMVOjsgsjMCp/System-Architecture?node-id=0-1&t=49O9038k2hZR6mg6-1
