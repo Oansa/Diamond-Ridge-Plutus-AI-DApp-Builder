@@ -5,56 +5,37 @@ An AI-powered Plutus dApp builder that turns natural-language instructions into 
 # System Architecure Diagram
 
 flowchart TD
+    User([User]) --> UI[Web UI / IDE]
+    UI --> Backend[Backend API]
+    Backend --> ModelServer[AI Model Server]
+    ModelServer --> Validator[Validation Layer]
+    Validator --> Compiler[Plutus Compiler]
+    Compiler --> Testnet[Testnet Deployment Tool]
+    
+    Validator --> SecurityScan[Security Scanner]
+    SecurityScan --> Report[Feedback Report]
 
-    User[User / Founder / Developer] -->|Natural Language Request| UI[Diamond Ridge Web Interface]
+    Backend --> DB[(Project Database)]
 
-    UI --> API[Backend API Layer]
 
-    API --> Auth[Authentication & Access Control]
-    API --> TaskMgr[Task Orchestration Service]
-
-    TaskMgr --> DataPrep[Dataset + Preprocessing Layer]
-    DataPrep --> Model[Plutus-Trained LLM]
-
-    Model -->|Generated Plutus Code| Validator[Safety & Validation Engine]
-    Validator --> Compiler[Plutus Compiler Integration]
-    Validator --> Security[Static Analysis & Vulnerability Scanner]
-    Validator --> Budget[Execution Budget Estimator]
-
-    Compiler --> IDE[Web IDE + Code Explorer]
-    Security --> IDE
-    Budget --> IDE
-
-    IDE --> Deploy[One-Click Testnet Deployment Module]
-    Deploy --> Cardano[Cardano Testnet / Mainnet]
-
-    IDE --> Export[Export to Local Dev Environment]
-
+ 
 
 # AI Training & Plutus Code Generation Pipeline
 
 flowchart LR
+flowchart TD
+    A[Raw Plutus Code Sources] --> B[Data Cleaning & Processing]
+    B --> C[Tokenization]
+    C --> D[Fine-Tuning LLM on Plutus Data]
+    D --> E[Model Evaluation]
+    E --> G{Passes Quality?}
+    G -->|Yes| H[Deploy Model to Model Server]
+    G -->|No| D
 
-    RawData[Raw Plutus Code Samples] --> Cleaning[Data Cleaning & Deduplication]
-    CommunityData[Community Contracts / GitHub / IOG Sources] --> Cleaning
-    Tutorials[PPP Materials & Docs] --> Cleaning
+    H --> I[User Input (Natural Language)]
+    I --> J[AI Generates Plutus Code]
+    J --> K[Validation Layer]
+    K --> L[Compilation & Security Checks]
+    L --> M[Validated Code Output]
 
-    Cleaning --> Structuring[Dataset Structuring & Tokenization]
-    Structuring --> Split[Train/Validation/Test Split]
-
-    Split --> Training[Model Fine-Tuning on Plutus Dataset]
-    Training --> Eval[Model Evaluation & Benchmarking]
-
-    Eval --> Deployment[Model Deployment to Backend]
-    Deployment --> GenReq[User Request Inference]
-
-    GenReq --> Generate[AI Code Generation]
-    Generate --> Validate[Validation Layer]
-
-    Validate -->|Compilation OK| IDE[Web IDE Interface]
-    Validate -->|Security OK| IDE
-    Validate -->|Budget OK| IDE
-
-    IDE --> TestnetDeploy[Testnet Deployment Engine]
-    IDE --> ExportLocal[Export Code to Local Environment]
 
